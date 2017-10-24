@@ -1,0 +1,14 @@
+<div class="background-image">
+    <img src="./assets/Chuck.jpg" alt="Chuck Norris">
+</div>
+<div class="home-page">
+
+    <div *ngIf="randomFact" class="random-fact">
+        <div class="fact-container">
+            <p class="fact">{{randomFact.value}}</p>
+        </div>
+        <a class="btn btn-outline-custom mt-3 mx-2" (click)="getAnotherFact($event)">Get another random fact</a>
+        <a class="btn btn-outline-custom mt-3 mx-2" routerLink="/facts" routerLinkActive="active" >Get more...</a>
+    </div>
+
+</div>

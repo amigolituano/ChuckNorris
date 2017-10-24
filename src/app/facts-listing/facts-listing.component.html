@@ -1,0 +1,35 @@
+<div class="facts-container mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 pt-3">
+                <h5 class="text-center text-white">Filter by category</h5>
+                <form class="list-group" (submit)="filterByCategory($event)">
+                    <li class="list-group-item p-2 pointer" (click)="check($event)"><input class="mr-2" type="checkbox" value="uncategorized">Uncategorized</li>
+                    <ng-template ngFor let-category [ngForOf]="allCategories">
+                        <li class="list-group-item p-2 pointer" (click)="check($event)"><input class="mr-2" type="checkbox" value="{{category}}">{{category}}</li>
+                    </ng-template>
+
+                    <button class="btn" type="submit" name="button">Filter</button>
+                </form>
+                <button class="btn w-100" (click)="showAll()">Show all</button>
+            </div>
+            <div class="col-md-9  col-sm-8 pt-3" *ngIf="Facts.length>0">
+                <div class="row facts-column">
+                    <h4 class="facts-title text-white">Random facts about Chuck Norris</h4>
+                    <button class="btn mx-auto" type="button" name="button" (click)="getRandomFacts()">Get another random facts</button>
+                    <p class="text-center w-100 text-white">{{err}}</p>
+                    <ul class="list m-0 p-0">
+                        <ng-template ngFor let-fact [ngForOf]="randomFactsArray">
+                          <li class="list-item col-md-6">
+                              <div class="list-item-card d-flex">
+                                  <p class="w-100">{{fact.value}}</p>
+                                  <p class="w-100 p-0 m-0 capitalize align-self-end"><strong>Category:&#32;</strong>{{fact.category}}</p>
+                              </div>
+                          </li>
+                      </ng-template>
+                    </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
